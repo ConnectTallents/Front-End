@@ -1,7 +1,7 @@
 export default function Rodape() {
     return(
         <footer>
-            <p>Rodape</p>
+            <h1>Rodape</h1>
         </footer>
     )
 }
