@@ -1,24 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --fonte: "Roboto", sans-serif;
+:root{
+    --fonte: "Roboto", sans-serif;
 }
 
-@layer base {
-  html, body {
-    @apply h-full;
-    font-family: var(--fonte);
-  }
-
-  body {
+body{
     @apply flex flex-col min-h-screen m-0 p-0;
-  }
-
-  main {
-    @apply flex-1;
-  }
-
-  * {
-    @apply box-border max-w-full;
-  }
+    font-family: var(--fonte)
 }
+
+@layer{
+    
+    .container{
+        @apply h-screen w-full flex flex-col;
+
+        & header{
+            @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-between p-5;
+            & h1{
+                @apply text-3xl font-bold;
+            }
+
+            & nav{
+                @apply flex gap-5;
+                & a{
+                    @apply hover:underline;
+
+                }
+            }
+        }
+
+        & main{
+            @apply h-[60vh] w-[100vw] overflow-auto;
+        }
+
+        & footer{
+            @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-end p-5
+        }
+
+    }
+  }

@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <>
-      <Cabecalho/>
-        <Outlet/>
-      <Rodape/>
-    </>
+    <div className='container'>
+      <Cabecalho />
+        <Outlet />
+      <Rodape />
+    </div>
   )
 }
 
