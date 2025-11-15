@@ -1,41 +1,163 @@
 @import "tailwindcss";
 
-:root{
-    --fonte: "Roboto", sans-serif;
+:root {
+  /* ----------------------------- */
+  /* Cores principais do tema      */
+  /* ----------------------------- */
+
+  --verde-metalico-principal: #1EC88A;
+  --verde-metalico-escuro: #159F70;
+
+  /* Branco base */
+  --branco-principal: #FFFFFF;
+
+  /* Transparências */
+  --verde-metalico-translucido: #1EC88A4D; /* 30% alpha */
+  
+  /* ----------------------------- */
+  /* Escala de cinzas usada no texto (opcional) */
+  /* ----------------------------- */
+
+  --cinza-claro: #F5F5F5;
+  --cinza-medio: #E5E7EB;
+  --cinza-escuro: #374151;
+
+  /* ----------------------------- */
+  /* Sombras */
+  /* ----------------------------- */
+  --sombra-padrao: rgba(0, 0, 0, 0.1);
+
+  --fonte: "Roboto",
+    sans-serif;
 }
 
-body{
-    @apply flex flex-col min-h-screen m-0 p-0;
-    font-family: var(--fonte)
+body {
+  @apply flex flex-col min-h-screen m-0 p-0;
+  font-family: var(--fonte)
 }
 
-@layer{
-    
-    .container{
-        @apply h-screen w-full flex flex-col;
+@layer base {
 
-        & header{
-            @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-between p-5;
-            & h1{
-                @apply text-3xl font-bold;
-            }
+  .container {
+    @apply h-screen w-full flex flex-col;
 
-            & nav{
-                @apply flex gap-5;
-                & a{
-                    @apply hover:underline;
+    & header {
+      @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-between p-5;
 
-                }
-            }
+      & h1 {
+        @apply text-3xl font-bold;
+      }
+
+      & nav {
+        @apply flex gap-5;
+
+        & a {
+          @apply hover:underline;
+
         }
-
-        & main{
-            @apply h-[60vh] w-[100vw] overflow-auto;
-        }
-
-        & footer{
-            @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-end p-5
-        }
-
+      }
     }
+
+    & main {
+      @apply h-[60vh] w-[100vw] overflow-auto bg-[var(--cinza-claro)];
+    }
+
+    & footer {
+      @apply h-[20vh] w-[100vw] border-b flex flex-col items-center justify-end p-5
+    }
+
   }
+}
+
+@layer components {
+
+  /* ============================
+        CABEÇALHO
+  =============================*/
+  .cabecalho {
+    @apply w-full flex justify-between items-center 
+           px-10 py-5 mx-auto;
+    border: none;
+  }
+
+  .cabecalho_logo {
+    @apply flex flex-col;
+  }
+
+  .cabecalho_logo h1 {
+    @apply text-2xl font-bold;
+    color: var(--verde-metalico-principal);
+  }
+
+  .cabecalho_logo p {
+    @apply mt-[0.25rem] text-[0.875rem];
+    color: var(--cinza-escuro);
+  }
+
+  .navegacao {
+    @apply flex items-center;
+  }
+
+  .lista_navegacao {
+    @apply flex gap-[4rem] list-none m-0 p-0 items-center;
+  }
+
+  .lista_navegacao li a {
+    @apply text-[1rem] font-medium transition-all duration-200;
+    color: var(--verde-metalico-escuro);
+  }
+
+  .lista_navegacao li a:hover {
+    color: var(--verde-metalico-principal);
+    opacity: 0.85;
+  }
+
+  .nav_item_ativo {
+    @apply font-semibold underline;
+    color: var(--verde-metalico-principal);
+  }
+
+
+  /* ============================
+        HOME 
+  =============================*/
+  .home_container {
+    @apply w-full flex flex-col items-center mt-10 px-6;
+  }
+
+  .home_title {
+    @apply text-3xl font-bold mb-10;
+    color: var(--cinza-escuro);
+  }
+
+
+  /* ============================
+        CARDS
+  =============================*/
+  .cards_section {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-[90%] max-w-6xl;
+  }
+
+  .card_apresentacao {
+    @apply rounded-2xl shadow-lg p-6 text-center transition-all duration-300;
+
+    background-color: var(--branco-principal);
+    border: 2px solid var(--cinza-medio);
+    color: var(--cinza-escuro);
+  }
+
+  .card_apresentacao:hover {
+    @apply shadow-2xl scale-[1.03];
+    border-color: var(--verde-metalico-principal);
+  }
+
+  .card_apresentacao h3 {
+    @apply text-xl font-semibold mb-3;
+    color: var(--verde-metalico-principal);
+  }
+
+  .card_apresentacao p {
+    @apply text-base;
+    color: var(--cinza-escuro);
+  }
+}
